@@ -18,7 +18,7 @@ function NewMeetupForm(props) {
 
     const meetupData = {
       title: enteredTitle,
-      imgage: enteredImage,
+      image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
     }
