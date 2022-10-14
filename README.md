@@ -43,3 +43,15 @@ function App() {
 
 export default App;
 ```
+
+.env file usage without library
+
+add `REACT_APP_` as prefix to every variable
+
+```env
+REACT_APP_FIREBASE_URL=https://firebase.code.url
+```
+
+```js
+`${process.env.REACT_APP_FIREBASE_URL}`
+```
