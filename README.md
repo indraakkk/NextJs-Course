@@ -44,6 +44,39 @@ function App() {
 export default App;
 ```
 
+Use `useNavigate` for react-router-dom@6 [migrate to react-router-dom@6](https://reactrouter.com/en/v6.3.0/upgrading/v5#use-usenavigate-instead-of-usehistory)
+
+```js
+import { useNavigate } from "react-router-dom";
+import NewMeetupForm from "../components/meetups/NewMeetupForm";
+
+function NewMeetupPage() {
+  let history = useNavigate();
+  function addMeetupHandler(meetupdata) {
+    const url = `${process.env.REACT_APP_FIREBASE_URL}/meetups.json`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(meetupdata),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      history("/");
+    });
+  }
+
+  return (
+    <section>
+      <h1>Add New Meetup</h1>
+      <NewMeetupForm onAddMeetup={addMeetupHandler} />
+    </section>
+  );
+}
+
+export default NewMeetupPage;
+
+```
+
 .env file usage without library
 
 add `REACT_APP_` as prefix to every variable
